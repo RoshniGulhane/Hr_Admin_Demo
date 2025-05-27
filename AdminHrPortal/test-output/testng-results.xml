@@ -1,57 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
+<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-05-12T12:56:16 IST" name="Default suite" finished-at="2025-05-12T12:57:42 IST" duration-ms="85897">
+  <suite started-at="2025-05-27T16:33:10 IST" name="Default suite" finished-at="2025-05-27T16:35:20 IST" duration-ms="130367">
     <groups>
     </groups>
-    <test started-at="2025-05-12T12:56:16 IST" name="Default test" finished-at="2025-05-12T12:57:42 IST" duration-ms="85897">
+    <test started-at="2025-05-27T16:33:10 IST" name="Default test" finished-at="2025-05-27T16:35:20 IST" duration-ms="130367">
       <class name="com.admin.in.test.AdminHrTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:56:16 IST" name="setup" finished-at="2025-05-12T12:56:27 IST" duration-ms="10846" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:33:10 IST" name="setup" finished-at="2025-05-27T16:33:16 IST" duration-ms="6119" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="loginTest()[pri:1, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:56:27 IST" name="loginTest" finished-at="2025-05-12T12:56:48 IST" duration-ms="21086" status="PASS">
+        <test-method signature="loginTest()[pri:1, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:33:16 IST" name="loginTest" finished-at="2025-05-27T16:33:37 IST" duration-ms="21102" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method signature="dashboardTest()[pri:2, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:56:48 IST" name="dashboardTest" finished-at="2025-05-12T12:56:53 IST" duration-ms="4576" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- dashboardTest -->
-        <test-method signature="deleteDashboardTest()[pri:4, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:56:53 IST" name="deleteDashboardTest" finished-at="2025-05-12T12:56:55 IST" duration-ms="2126" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- deleteDashboardTest -->
-        <test-method signature="addEmployeeTest()[pri:5, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:56:55 IST" name="addEmployeeTest" finished-at="2025-05-12T12:57:09 IST" duration-ms="13781" status="PASS">
+        <test-method signature="addEmployeeTest()[pri:5, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:33:37 IST" name="addEmployeeTest" finished-at="2025-05-27T16:33:51 IST" duration-ms="14055" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addEmployeeTest -->
-        <test-method signature="searchEmployeeTest()[pri:6, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:57:09 IST" name="searchEmployeeTest" finished-at="2025-05-12T12:57:11 IST" duration-ms="2405" status="PASS">
+        <test-method signature="searchEmployeeTest()[pri:6, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:33:51 IST" name="searchEmployeeTest" finished-at="2025-05-27T16:33:54 IST" duration-ms="2512" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchEmployeeTest -->
-        <test-method signature="payrollTest()[pri:10, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:57:11 IST" name="payrollTest" finished-at="2025-05-12T12:57:16 IST" duration-ms="5183" status="PASS">
+        <test-method signature="addpayrollTest()[pri:10, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:33:54 IST" name="addpayrollTest" finished-at="2025-05-27T16:34:11 IST" duration-ms="17219" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- payrollTest -->
-        <test-method signature="massengerTest()[pri:11, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:57:16 IST" name="massengerTest" finished-at="2025-05-12T12:57:21 IST" duration-ms="5168" status="PASS">
+        </test-method> <!-- addpayrollTest -->
+        <test-method signature="addSalPayTest()[pri:11, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:34:11 IST" name="addSalPayTest" finished-at="2025-05-27T16:34:18 IST" duration-ms="7309" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addSalPayTest -->
+        <test-method signature="holidayTest()[pri:12, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:34:18 IST" name="holidayTest" finished-at="2025-05-27T16:34:22 IST" duration-ms="3086" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- holidayTest -->
+        <test-method signature="deleteholidayTest()[pri:14, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:34:22 IST" name="deleteholidayTest" finished-at="2025-05-27T16:34:34 IST" duration-ms="12230" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteholidayTest -->
+        <test-method signature="massengerTest()[pri:15, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:34:34 IST" name="massengerTest" finished-at="2025-05-27T16:34:39 IST" duration-ms="5139" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- massengerTest -->
-        <test-method signature="taskTest()[pri:12, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:57:21 IST" name="taskTest" finished-at="2025-05-12T12:57:29 IST" duration-ms="7199" status="PASS">
+        <test-method signature="taskTest()[pri:16, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:34:39 IST" name="taskTest" finished-at="2025-05-27T16:34:50 IST" duration-ms="10939" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- taskTest -->
-        <test-method signature="settingTest()[pri:13, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:57:29 IST" name="settingTest" finished-at="2025-05-12T12:57:35 IST" duration-ms="6200" status="PASS">
+        <test-method signature="settingTest()[pri:17, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:34:50 IST" name="settingTest" finished-at="2025-05-27T16:34:56 IST" duration-ms="6320" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- settingTest -->
-        <test-method signature="leaveTest()[pri:14, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:57:35 IST" name="leaveTest" finished-at="2025-05-12T12:57:42 IST" duration-ms="7182" status="PASS">
+        <test-method signature="leaveTest()[pri:18, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:34:56 IST" name="leaveTest" finished-at="2025-05-27T16:35:13 IST" duration-ms="16917" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- leaveTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.admin.in.test.AdminHrTest@28dcca0c]" started-at="2025-05-12T12:57:42 IST" name="tearDown" finished-at="2025-05-12T12:57:42 IST" duration-ms="0" status="PASS">
+        <test-method signature="leaveSearchTest()[pri:19, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:35:13 IST" name="leaveSearchTest" finished-at="2025-05-27T16:35:20 IST" duration-ms="7240" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- leaveSearchTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.admin.in.test.AdminHrTest@4bdeaabb]" started-at="2025-05-27T16:35:20 IST" name="tearDown" finished-at="2025-05-27T16:35:20 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

@@ -1,111 +1,100 @@
 package com.admin.in.pages;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import java.time.Duration;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HolidayPage {
-	
-	WebDriver driver;
-	 @FindBy(xpath="//input[@placeholder='Holiday Name']")
-	    WebElement hname;
 
-	    @FindBy(xpath="//input[@placeholder='Select the date']")
-	    WebElement holidayDate;
-	    
-	    @FindBy(xpath = "//button[normalize-space()='Add Holiday']")
-	    WebElement addHolidayButton;
+    WebDriver driver;
+    WebDriverWait wait;
 
-	   
-	    public HolidayPage(WebDriver driver) {
-	        this.driver = driver;
-	        PageFactory.initElements(driver, this);
-	    }
+    @FindBy(xpath = "//input[@placeholder='Holiday Name']")
+    WebElement hname;
 
-		public void enterHolidayName(String name) {
-	    	hname.sendKeys(name);
-	    }
+    @FindBy(id = "datePicker")
+    WebElement holidayDate;
 
-	    public void enterDate(String hdate) {
-	    	holidayDate.sendKeys(hdate);
-	    }
-	    
-	    public void clickLogin() {
-	    	addHolidayButton.click();
-	    }
-	    
-	    
-	    
-	    public void addHoliday(String name,String date ) {
-			 driver.findElement(By.cssSelector("button[class='w-full md:w-52 min-h-12 bg-[#7151F3] rounded-xl text-white px-4 py-2']")).click();
+    @FindBy(xpath = "//button[normalize-space()='Add Holiday']")
+    WebElement addHolidayButton;
 
-	    	 enterHolidayName(name);
-			 enterDate(date);
-			 
-			 try {
-					Thread.sleep(7000);
-					clickLogin();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		    	
-	    }
-	    
-	    public void searchEditHoliday() {
-	    	 WebElement searchButton = driver.findElement(By.xpath("//input[@placeholder='Search holidays...']"));
-	    	 searchButton.sendKeys("jay Shree Ram");
-	    	 
-	    	 WebElement editButton = driver.findElement(By.cssSelector("button[class='bg-transparent border border-blue-500 hover:bg-blue-500 text-yellow-600 hover:text-yellow-600 duration-300 px-3 py-1 rounded-lg']"));
-	    	 editButton.click();
-	    	 
-	    	 WebElement editHday = driver.findElement(By.xpath("//input[@placeholder='Holiday Name']"));
-	    	 editHday.clear();
-	    	 editHday.sendKeys("jay Shree Ram");
-	    	
-	    	 WebElement editHdayDate = driver.findElement(By.xpath("//input[@placeholder='Select the date']"));
-	    	 editHdayDate.clear();
-	    	 editHdayDate.sendKeys("15-05-2025");
-			
-			 WebElement updateButton = driver.findElement(By.xpath("//button[normalize-space()='Update Holiday']"));
-			 updateButton.click();
-			 
-			 
-	    }
-	    public void deleteHoliday() {
-	    	try {
-	    	 
-	    	driver.get("https://bluehr.in/holidays"); // Replace with actual URL
-            driver.manage().window().maximize();
+    public HolidayPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
 
-            Thread.sleep(2000); // Optional static wait (use WebDriverWait in production)
+    public void enterHolidayName(String name) {
+        hname.clear();
+        hname.sendKeys(name);
+    }
 
-            String holidayToDelete = "jay Shree Ram";
+    public void enterDate(String hdate) {
+        holidayDate.clear();
+        holidayDate.sendKeys(hdate);
+    }
 
-            // Dynamic XPath to locate the delete button for the specific holiday
-            String deleteXPath = "//td[contains(text(),'" + holidayToDelete + "')]/following-sibling::td[last()]//button | " +
-                                 "//td[contains(text(),'" + holidayToDelete + "')]/following-sibling::td[last()]//i[contains(@class,'fa-trash')]";
+    public void clickAddHoliday() {
+        addHolidayButton.click();
+    }
 
-            WebElement deleteBtn = driver.findElement(By.xpath(deleteXPath));
+    public void addHoliday(String name, String date) {
+        driver.findElement(By.xpath("//button[normalize-space()='Add New Holiday']")).click();
+        enterHolidayName(name);
+        enterDate(date);
+        wait.until(ExpectedConditions.elementToBeClickable(addHolidayButton)).click();
+    }
+
+    public void searchEditHoliday(String holidayName, String newName, String newDate) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//input[contains(@placeholder,'Search')]")));
+        searchBox.clear();
+        searchBox.sendKeys(holidayName);
+
+        // Wait for the row to appear
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//tr[td[normalize-space()='" + holidayName + "']]")));
+
+        // Then wait for the Edit button to be clickable
+        WebElement editButton = wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//tr[td[normalize-space()='" + holidayName + "']]//button[contains(text(),'Edit')]")));
+        editButton.click();
+
+        wait.until(ExpectedConditions.visibilityOf(hname)).clear();
+        hname.sendKeys(newName);
+
+        holidayDate.clear();
+        holidayDate.sendKeys(newDate);
+
+        driver.findElement(By.xpath("//button[normalize-space()='Update Holiday']")).click();
+    }
+
+
+
+    public void deleteHoliday(String holidayName) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            String deleteXPath = "//tr[td[normalize-space()='" + holidayName + "']]//button[contains(@class,'delete')]";
+
+            WebElement deleteBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(deleteXPath)));
             deleteBtn.click();
 
-            // Optional: Handle JS alert if shown after delete click
+            // Accept alert if present
             try {
+                wait.until(ExpectedConditions.alertIsPresent());
                 driver.switchTo().alert().accept();
-            } catch (Exception e) {
-                // No alert
+            } catch (NoAlertPresentException e) {
+                System.out.println("No alert appeared.");
             }
-            System.out.println("Deleted holiday: " + holidayToDelete);
 
+            System.out.println("Deleted holiday: " + holidayName);
         } catch (Exception e) {
             e.printStackTrace();
         }
-	    }
-}
-
     
-
+    }
+}

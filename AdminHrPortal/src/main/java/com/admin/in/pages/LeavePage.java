@@ -36,55 +36,45 @@ public class LeavePage {
 		 viewAllLeavePage.click();
 		 
 		 Thread.sleep(2000);
-		 WebElement viewPendingLeavePage = driver.findElement(By.xpath("(//button[@class='px-4 py-2 rounded btn-primary'])[1]"));
+		 WebElement viewPendingLeavePage = driver.findElement(By.cssSelector(".px-4.py-2.rounded.btn-primary"));
 		 viewPendingLeavePage.click();
 		 
 		 Thread.sleep(2000);
 		 WebElement viewFilterPage = driver.findElement(By.xpath("//button[normalize-space()='Filter']"));
 		 viewFilterPage.click();
 		 
-		 WebElement viewFilter = driver.findElement(By.xpath("//select[@class='input']"));
-		 Select dropdown = new Select(viewFilter);
+		 WebElement viewFilterSelectEmp = driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > select:nth-child(1)"));
+		 Select dropdown = new Select(viewFilterSelectEmp);
 	        dropdown.selectByIndex(1);
 	        
+	        WebElement viewSelectYr = driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > select:nth-child(2)"));
+			 Select dropdown1 = new Select(viewSelectYr);
+		        dropdown1.selectByIndex(1);
+		        
+		        
 	     Thread.sleep(2000);
 			 WebElement applyPage = driver.findElement(By.xpath("//button[normalize-space()='Apply']"));
 			 applyPage.click();     
 		}
-	public void requestLeave() throws InterruptedException {
-		Thread.sleep(2000);
-		WebElement openRequestLeavePage = driver.findElement(By.xpath("//button[normalize-space()='Request Leave']"));
-		openRequestLeavePage.click();
-		
-		Thread.sleep(2000);
-		WebElement subjectPage = driver.findElement(By.xpath("//input[@placeholder='Subject']"));
-		subjectPage.sendKeys("cdcdcdcd");
-		
-		Thread.sleep(2000);
-		WebElement dateFromPage = driver.findElement(By.xpath("//input[@name='from']"));
-		dateFromPage.sendKeys("06-05-2025");
-		
-		Thread.sleep(2000);
-		WebElement dateToPage = driver.findElement(By.xpath("//input[@name='to']"));
-		dateToPage.sendKeys("08-05-2025");
-		
-		 WebElement leaveType = driver.findElement(By.xpath("//select[@name='leaveType']"));
-		 Select dropdown = new Select(leaveType);
-	        dropdown.selectByIndex(1);
-	        
-	     Thread.sleep(2000);
-	     WebElement descriptionPage = driver.findElement(By.xpath("//textarea[@placeholder='Enter the Description...']"));
-	     descriptionPage.sendKeys("aaaaaaadfsf hfguhgfdhgkfjgkldfjgodfhgkjdf"); 
-	     
-	     Thread.sleep(2000);
-		WebElement clickIfUrgent = driver.findElement(By.xpath("//input[@name='urgent']"));
-		clickIfUrgent.click();
-			
-			Thread.sleep(2000);
-			WebElement clickApply = driver.findElement(By.xpath("//button[normalize-space()='Apply']"));
-			clickApply.click();
-	     
-		
-		
+	
+	public void searchLeave() throws InterruptedException {
+		 WebElement searchLeavePage = driver.findElement(By.xpath("//input[@placeholder='Search']"));
+		 searchLeavePage.sendKeys("fedf");
+		 
+//		 WebElement addNotePage = driver.findElement(By.xpath("//input[@placeholder='Add note...']"));
+//		 addNotePage.sendKeys("aaaa");
+//		 
+//		 WebElement selectPayStsPage = driver.findElement(By.xpath("(//select[@class='input mt-2'])[1]"));
+//		 Select dropdown1 = new Select(selectPayStsPage);
+//	        dropdown1.selectByIndex(1);
+//		 
+//		 WebElement approveBtnPage = driver.findElement(By.xpath("//button[@class='btn_approved']"));
+//		 approveBtnPage.click();
+		 
+		 
 	}
+	
+		
+		
+	
 }

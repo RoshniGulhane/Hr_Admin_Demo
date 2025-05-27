@@ -1,8 +1,14 @@
 package com.admin.in.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage {
 	
@@ -10,36 +16,50 @@ public class DashboardPage {
 	    WebDriver driver;
 
 	   
-	    By dailytasks = By.xpath("//input[contains(@placeholder,'Enter Your Task')]");
-	    By taskAdd = By.xpath("//button[normalize-space()='ADD']");
+	    @FindBy(xpath = "//input[contains(@placeholder,'Enter Your Task')]")
+	    WebElement taskInput;
+
+	    @FindBy(xpath = "//button[normalize-space()='ADD']")
+	    WebElement addTaskButton;
+
 	    public DashboardPage(WebDriver driver) {
 	        this.driver = driver;
+	        PageFactory.initElements(driver, this);
 	    }
 
-	    
-	    public void dashboard(String user) throws InterruptedException {
-	    	
-	        driver.findElement(dailytasks).sendKeys(user);
-	        Thread.sleep(2000);
-	        driver.findElement(taskAdd).click();
+	    public void addTaskToDailyList(String taskName) {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.visibilityOf(taskInput)).sendKeys(taskName);
+	        wait.until(ExpectedConditions.elementToBeClickable(addTaskButton)).click();
 	    }
-	    
-	    
-	    public void updateTask() throws InterruptedException {
-	    	Thread.sleep(5000);
-	    	driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > section:nth-child(1) > div:nth-child(1) > div:nth-child(2) > ul:nth-child(1) > div:nth-child(1) > div:nth-child(2) > svg:nth-child(1)")).click();
-	    	WebElement uptaskNew = driver.findElement(By.xpath("//input[contains(@placeholder,'Enter Your Task')]"));
-	    	uptaskNew.clear();
-	    	uptaskNew.sendKeys("Dept_module");
-	        Thread.sleep(2000);
-	        driver.findElement(By.xpath("//button[normalize-space()='ADD']")).click();
-	    }
-	    public void deleteTask() throws InterruptedException {
-	    	Thread.sleep(2000);
-	    		    	 WebElement clickIcon = driver.findElement(By.cssSelector("body > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > section:nth-child(1) > div:nth-child(1) > div:nth-child(2) > ul:nth-child(1) > div:nth-child(1) > div:nth-child(2) > svg:nth-child(2)"));
-	    	 clickIcon.click();
-	    }
+	    	public void updateTask(String taskName, String updatedName) {
+	    	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
+	    	    // Find the task by its text and click its corresponding edit icon
+	    	    WebElement taskRow = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	    	        By.xpath("//li[.='" + taskName + "']/following-sibling::div//svg[@data-testid='EditIcon']")));
+	    	    taskRow.click();
+
+	    	    // Clear and update input
+	    	    WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	    	        By.xpath("//input[@placeholder='Enter Your Task']")));
+	    	    input.clear();
+	    	    input.sendKeys(updatedName);
+
+	    	    // Click the update button
+	    	    WebElement updateBtn = wait.until(ExpectedConditions.elementToBeClickable(
+	    	        By.xpath("//button[normalize-space()='UPDATE']")));
+	    	    updateBtn.click();
+	    	}
+
+	    	public void deleteTask(String taskName) {
+	    	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+
+	    	    // Find the delete icon for the given task name
+	    	    WebElement deleteIcon = wait.until(ExpectedConditions.elementToBeClickable(
+	    	        By.xpath("//li[.='" + taskName + "']/following-sibling::div//svg[@data-testid='DeleteIcon']")));
+	    	    deleteIcon.click();
+	    	}
 	    public void goToAddEmployee() {
 	    	try {
 				Thread.sleep(2000);
